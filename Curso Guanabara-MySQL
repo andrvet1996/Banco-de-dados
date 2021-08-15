@@ -1,0 +1,34 @@
+create database cadastro
+default character set utf8
+default collate utf8_general_ci;
+
+create table pessoas(
+id int not null auto_increment,
+`nome` varchar(30) not null,
+`nascimento` date, 
+`sexo` enum ('M', 'F'),
+`peso` decimal (5, 2),
+`altura`decimal (3, 2),
+`nacionalidade` varchar (20) default 'Brasil',
+primary key (id)
+) default charset = utf8;
+
+insert into pessoas   COMANDO PARA INSERIR PESSOAS SEM ID
+(nome, nascimento, sexo, peso, altura, nacionalidade)
+values
+('André', '1976-06-26', 'M', '140.5', '1.81', 'Brasil');
+
+select * from pessoas;COMANDO PARA MOSTRAR AS PESSOAS INSERIDAS
+
+
+COMO INSERIR PESSOAS INFORMANDO O ID E USANDO DEFAULT
+insert into pessoas
+(id, nome, nascimento, sexo, peso, altura, nacionalidade)
+values
+(DEFAULT, 'Joana', '1930-11-08', 'F', '40.5', '1.41', 'Brasil');
+
+COMO INSERIR VÁRIAS PESSOAS
+insert into pessoas values
+(DEFAULT, 'Maria', '1980-06-11', 'F', '81.8', '1.97', 'Irlanda'),
+(DEFAULT, 'Luís', '1970-07-03', 'M', '70.0', '1.90', 'Brasil'),
+(DEFAULT, 'Pietra', '2021-07-03', 'F', '5.0', '0.70', 'Jamaica');
