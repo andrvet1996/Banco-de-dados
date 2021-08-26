@@ -27,8 +27,33 @@ insert into pessoas
 values
 (DEFAULT, 'Joana', '1930-11-08', 'F', '40.5', '1.41', 'Brasil');
 
+
 COMO INSERIR VÁRIAS PESSOAS
 insert into pessoas values
 (DEFAULT, 'Maria', '1980-06-11', 'F', '81.8', '1.97', 'Irlanda'),
 (DEFAULT, 'Luís', '1970-07-03', 'M', '70.0', '1.90', 'Brasil'),
 (DEFAULT, 'Pietra', '2021-07-03', 'F', '5.0', '0.70', 'Jamaica');
+
+
+COMO MODIFICAR TABELAS
+desc pessoas;
+
+alter table pessoas
+add column profissão varchar (10) after nome;
+
+alter table pessoas
+add column codigo int first;
+
+alter table pessoas 
+modify column profissão varchar (20) not null default '';
+
+alter table pessoas
+change column profissão profissao varchar(20) not null default '';
+
+select * from pessoas;
+
+
+COMO MODIFICAR NOME DAS TABELAS
+alter table pessoas
+rename to cadastros;
+
