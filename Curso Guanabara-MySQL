@@ -74,3 +74,33 @@ alter table cursos
 add primary key (idcurso);
 
 describe cursos;
+
+
+MANIPULANDO LINHAS
+insert into cursos values
+('1','Inglês','Ingles instrumental','100','20','2016'),
+('2','WordOffice','Word basico','80','10','2017'),
+('3','Excel','Excel basico','80','10','2017'),
+('4','PP','Power Point basico','70','16','2020'),
+('5','SQL','SQL Avançado','100','20','2010'),
+('6', 'Python','Phython basico','100','8','2019'),
+('7','PowerPoint','Power Point avancado','70','16','2020'),
+('8','PowerP','Power Point avancado','100','16','2015'),
+('9','WordLibreOffice','Word avancado','70','16','2020'),
+('10','Pyth','Python para cientistas','400','20','2020');
+
+select * from cursos;
+
+CORRIGINDO DADOS DA LISTA
+update cursos
+set nome = 'Pythcientista'
+where idcurso = '10';
+
+update cursos
+set carga = '1000', ano = '2021'
+where idcurso = '10'
+limit 1;ESSE COMANDO MUDA APENAS UMA LINHA, S/ RISCO DE MUDAR OUTRAS
+
+select * from cursos
+
+select * from cursos
