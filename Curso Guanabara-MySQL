@@ -91,10 +91,17 @@ insert into cursos values
 
 select * from cursos;
 
+DELETAR LINHAS
+delete from cursos
+where idcurso = '8';
+
+select * from cursos
+
 CORRIGINDO DADOS DA LISTA
 update cursos
 set nome = 'Pythcientista'
 where idcurso = '10';
+select * from cursos
 
 update cursos
 set carga = '1000', ano = '2021'
@@ -103,4 +110,9 @@ limit 1;ESSE COMANDO MUDA APENAS UMA LINHA, S/ RISCO DE MUDAR OUTRAS
 
 select * from cursos
 
+APAGAR TODOS OS REGISTROS, MAS MANTEM A ESTRUTURA (O DROP APAGA ATÉ A ESTRUTURA)
+truncate cursos;
 select * from cursos
+
+
+
