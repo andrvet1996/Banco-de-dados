@@ -114,5 +114,28 @@ APAGAR TODOS OS REGISTROS, MAS MANTEM A ESTRUTURA (O DROP APAGA ATÉ A ESTRUTURA
 truncate cursos;
 select * from cursos
 
+COMANDO SELECT
+select nome, carga, totalaulas cursos from cursos
+order by nome; #seleciona todas as colunas
+
+select * from cursos
+where ano = '2016'
+order by nome;#seleciona algumas colunas
+
+select * from cursos
+where totalaulas between '10' and '20'
+order by nome;
+
+select * from cursos
+where ano in ('2017', '2010')
+order by nome;
+
+select * from cursos
+where carga > 35 and totalaulas < 20
+order by nome;
+
+select * from cursos
+where carga > 35 or totalaulas < 20
+order by nome;
 
 
