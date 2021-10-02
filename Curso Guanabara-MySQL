@@ -149,3 +149,9 @@ where nome like '%P'; #retorna que terminam com a letra p ou P
 
 select * from cursos
 where nome like '%P%'; #retorna a letra p ou P em qualquer lugar
+
+select * from cursos
+where nome like 'P%N'; #retorna cursos que começam com p ou P e terminam com n ou N
+
+select * from cursos
+where nome like 'P%O_'; #retorna cursos que começam com p ou P e terminam com qualquer letra após a letra o ou O
