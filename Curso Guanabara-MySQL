@@ -155,3 +155,18 @@ where nome like 'P%N'; #retorna cursos que começam com p ou P e terminam com n 
 
 select * from cursos
 where nome like 'P%O_'; #retorna cursos que começam com p ou P e terminam com qualquer letra após a letra o ou O
+
+select nacionalidade from cadastros;#retorna os países repetidos
+select distinct nacionalidade from cadastros;#retorna os países sem repetir
+
+select count(*) from cursos; #conta tudo
+select * from cursos where carga > 100;#seleciona cursos com carga maior que 100 horas
+select count(*) from cursos where carga > 100;#conta os cursos com mais de 100 horas
+select max(carga) from cursos order by carga;#diz o curso com carga máxima
+select max(carga) from cursos where ano = '2020';#diz a caraga máxima dos cursos em 2020
+select sum(totalaulas) from cursos;#soma do total de aulas
+select avg (totalaulas) from cursos;#faz a media do total de aulas
+
+
+
+
