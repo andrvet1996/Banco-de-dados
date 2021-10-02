@@ -142,6 +142,10 @@ select * from cursos
 where * nome = 'Python' # encontra cursos com a palavra Python
 
 select * from cursos
-where nome like 'P%'; #retorna cursos com a letra p ou P
+where nome like 'P%'; #retorna cursos que começam com a letra p ou P
 
+select * from cursos
+where nome like '%P'; #retorna que terminam com a letra p ou P
 
+select * from cursos
+where nome like '%P%'; #retorna a letra p ou P em qualquer lugar
