@@ -138,4 +138,10 @@ select * from cursos
 where carga > 35 or totalaulas < 20
 order by nome;
 
+select * from cursos
+where * nome = 'Python' # encontra cursos com a palavra Python
+
+select * from cursos
+where nome like 'P%'; #retorna cursos com a letra p ou P
+
 
