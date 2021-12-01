@@ -1,0 +1,43 @@
+create database dbClinica19nov;
+use dbClinica19nov;
+
+create table paciente(
+	id int not null auto_increment,
+    nome varchar(100),
+    data_nasc date,
+    telefone varchar(100),
+    convenio varchar(100),
+    primary key(id)
+);
+
+consultacreate table consulta(
+	id int not null auto_increment,
+    idPaciente int not null,
+    data_consulta date,
+    queixa text,
+    diagnostico text,
+    primary key(id),
+    foreign key(idPaciente) references paciente (id) 
+);
+
+-- inserir dados em paciente
+insert into paciente(nome, data_nasc, telefone, convenio) values 
+('Pedro', '2000.01.10', '999-111','convênio 1');
+
+insert into paciente(nome, data_nasc, telefone, convenio) values 
+('Ana', '2000.01.12', '999-222','convênio 2'), #ano/mes/dia
+('João', '2000.01.13', '999-333','convênio 3'),
+('Helena', '2000.01.14', '999-444','convênio 4'),
+('Ricardo', '2000.01.15', '999-555','convênio 5'),
+('Jair', '2000.01.16', '999-666','convênio 6');
+
+insert into consulta(idPaciente, data_consulta, queixa, diagnostico) values 
+(4, '2010.10.21','dor nas costas','cálculo renal'),
+(3, '2010.10.22','dor de cabeça','enxaqueca'),
+(2, '2020.10.23','dor de estômago','úlcera'),
+(2, '2020.10.24','dor de cabeça','enxaqueca');
+
+select nome, telefone, convenio
+from paciente
+where convenio = 'convênio 1'
+
