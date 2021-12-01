@@ -41,3 +41,16 @@ select nome, telefone, convenio
 from paciente
 where convenio = 'convênio 1'
 
+-- comandos DML - manipulação         <---->                   comandos DDL
+    /*
+    insert to ........                                             create ......
+    update ..............                                           alter ......
+    delete from table .........                                     drop .......
+    select .....
+    *\
+
+/*buscando dados
+select: campos que é o resultado da consulta
+from: tabelas que serão consultadas
+Where: dá a restrição
+*\
