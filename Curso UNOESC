@@ -54,3 +54,86 @@ select: campos que é o resultado da consulta
 from: tabelas que serão consultadas
 Where: dá a restrição
 *\
+
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+create database bdLojaDaEsquina;
+use bdLojaDaEsquina;
+
+-- criar tabelas
+
+create table produto(
+id int not null auto_increment,
+nome varchar(100),
+preco float,
+estoque int,
+primary key (id)
+);
+
+create table venda(
+id int not null auto_increment,
+idProd int not null, -- atributo que é chave estrangeira
+valorVenda float,
+dataVenda datetime,
+quantidade int,
+primary key (id),
+foreign key (idProd) references produto(id) -- chave estrangeira
+);
+
+insert into produto(nome, preco, estoque) values
+('prod1', '10.00', 10),
+('prod2', '20.00', 20),
+('prod3', '30.00', 30),
+('prod4', '40.00', 40),
+('prod5', '50.00', 50);
+
+select count(id) as 'Numero de produtos diferentes em estoque'
+from produto;
+
+-- qual o valor total do meu estoque
+
+select sum (preco*estoque) as 'Valor total do estoque'
+from produto;
+
+insert into venda (idProd, valorVenda, dataVenda, quantidade) values
+(1, '20.00' , '2021.10.01', 2),
+(2, '80.00' , '2021.10.02', 4),
+(3, '60.00' , '2021.10.03', 2);
+
+select * -- aparece a tabela toda
+from produto inner join venda on (produto.id = venda.idProd);
+
+
+-- criar procedures para incluir produtos
+-- implementando a stored procedure
+
+delimiter $
+create procedure incluirProdutos (IN nome_p varchar(100), IN preco_p float, IN estoque_p int)
+begin
+insert into produto(nome, preco, estoque) values
+			(nome_p, preco_p, estoque_p);
+end $
+delimiter ;
+
+-- executar a procedure
+
+call incluirProdutos('prod6', 60.00, 60);
+call incluirProdutos('prod7', 70.00, 70);
+
+-- incluir procedure para registrar vendas
+delimiter $
+create procedure registrarVenda (IN nomeProd varchar(100), IN quant int)
+begin
+declare idProduto int;
+declare precoProduto float; 
+set idProduto = (select id from produto where nome = nomeProd);
+set precoProduto = (select preco from produto where nome = nomeProd);
+insert into venda (idProd, valorVenda, dataVenda, quantidade) values
+			(idProduto, precoProduto*quant, now(), quant);
+update produto set estoque = estoque - quant
+where id = idProduto;  
+end $
+delimiter ;
+
+-- executar a procedure
+call registrarVenda('prod1', 4);
