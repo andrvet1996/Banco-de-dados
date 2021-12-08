@@ -168,5 +168,21 @@ select sum(totalaulas) from cursos;#soma do total de aulas
 select avg (totalaulas) from cursos;#faz a media do total de aulas
 
 
+COMANDOS ORDER BY e HAVING COUNT
+select ano, count(*) from cursos
+group by ano
+having count(ano) >= 2
+-- seleciona os cursos com mais de duas ocorrências
+order by count(*) desc;
+-- desc = decrescente
+
+/*select totalaulas, count(*) from cursos
+group by totalaulas
+order by totalaulas;
+
+select carga, totalaulas from cursos where totalaulas=20
+group by carga;\*
+
+
 
 
