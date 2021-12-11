@@ -184,5 +184,41 @@ select carga, totalaulas from cursos where totalaulas=20
 group by carga;\*
 
 
+-- MODELO RELACIONAL
+use cadastro;
+alter table cadastros
+add column cursopreferido int;
 
+alter table cadastros
+add foreign key (cursopreferido)
+references cursos(idcurso);
+
+delete from cursos where idcurso = '1';
+-- esse comando só funciona porque esse curso não é o preferido de ninguém
+
+
+-- COMANDO INNER JOIN
+select nome, cursopreferido from cadastros;
+select nome, ano from cursos;
+
+select cadastros.nome, cadastros.cursopreferido, cursos.nome, cursos.ano
+from cadastros inner join cursos
+on cursos.idcurso = cadastros.cursopreferido
+order by cadastros.nome;
+
+select cadastros.nome, cadastros.cursopreferido, cursos.nome, cursos.ano
+from cadastros left outer join cursos
+-- vai mostrar todos os alunos de cadastros/ pode-se suprimir o outer
+on cursos.idcurso = cadastros.cursopreferido;
+
+select cadastros.nome, cadastros.cursopreferido, cursos.nome, cursos.ano
+from cadastros right outer join cursos
+-- vai mostrar todos os alunos de cursos
+on cursos.idcurso = cadastros.cursopreferido;
+
+select cad.nome, cad.cursopreferido, c.nome, c.ano
+from cadastros as cad right outer join cursos as c
+-- vai mostrar todos os alunos de cursos
+-- para facilitar criei apelido para as colunas
+on c.idcurso = cad.cursopreferido;
 
